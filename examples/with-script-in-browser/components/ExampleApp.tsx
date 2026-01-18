@@ -797,7 +797,7 @@ export default function ExampleApp({
             <div>y: {pointerData?.pointer.y ?? 0}</div>
           </div>
         </div>
-        <div className="excalidraw-wrapper">
+        <div className="skydeck-wrapper">
           {renderExcalidraw(children)}
           {Object.keys(commentIcons || []).length > 0 && renderCommentIcons()}
           {comment && renderComment()}

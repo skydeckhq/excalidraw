@@ -1904,7 +1904,7 @@ class App extends React.Component<AppProps, AppState> {
     return (
       <div
         translate="no"
-        className={clsx("excalidraw excalidraw-container notranslate", {
+        className={clsx("skydeck skydeck-container notranslate", {
           "excalidraw--view-mode":
             this.state.viewModeEnabled ||
             this.state.openDialog?.name === "elementLinkSelector",
@@ -1976,9 +1976,9 @@ class App extends React.Component<AppProps, AppState> {
                           {this.props.children}
                         </LayerUI>
 
-                        <div className="excalidraw-textEditorContainer" />
-                        <div className="excalidraw-contextMenuContainer" />
-                        <div className="excalidraw-eye-dropper-container" />
+                        <div className="skydeck-textEditorContainer" />
+                        <div className="skydeck-contextMenuContainer" />
+                        <div className="skydeck-eye-dropper-container" />
                         <SVGLayer
                           trails={[
                             this.laserTrails,

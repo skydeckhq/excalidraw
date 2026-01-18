@@ -1256,7 +1256,7 @@ export const ShapesSwitcher = ({
             icon={mermaidLogoIcon}
             data-testid="toolbar-embeddable"
           >
-            {t("toolBar.mermaidToExcalidraw")}
+            {t("toolBar.mermaidToSkydeck")}
           </DropdownMenu.Item>
           {app.props.aiEnabled !== false && app.plugins.diagramToCode && (
             <DropdownMenu.Item

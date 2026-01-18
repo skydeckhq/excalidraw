@@ -28,9 +28,9 @@
   --sat: env(safe-area-inset-top);
 }
 
-body.excalidraw-cursor-resize,
-body.excalidraw-cursor-resize a:hover,
-body.excalidraw-cursor-resize * {
+body.skydeck-cursor-resize,
+body.skydeck-cursor-resize a:hover,
+body.skydeck-cursor-resize * {
   cursor: ew-resize;
 }
 
@@ -76,7 +76,7 @@ body.excalidraw-cursor-resize * {
   //    component (e.g. if you select text in a sidebar)
   user-select: none;
 
-  .excalidraw-link,
+  .skydeck-link,
   a {
     font-weight: 500;
     text-decoration: none;
@@ -291,8 +291,8 @@ body.excalidraw-cursor-resize * {
     }
   }
 
-  .excalidraw-ui-top-left,
-  .excalidraw-ui-top-right {
+  .skydeck-ui-top-left,
+  .skydeck-ui-top-right {
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -558,7 +558,7 @@ body.excalidraw-cursor-resize * {
     pointer-events: none !important;
   }
 
-  &.excalidraw--view-mode {
+  &.skydeck--view-mode {
     .App-menu {
       display: flex;
       justify-content: space-between;
@@ -572,7 +572,7 @@ body.excalidraw-cursor-resize * {
   }
 
   input[type="text"],
-  textarea:not(.excalidraw-wysiwyg) {
+  textarea:not(.skydeck-wysiwyg) {
     color: var(--text-primary-color);
     border: 1.5px solid var(--input-border-color);
     padding: 0.75rem;

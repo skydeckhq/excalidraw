@@ -581,7 +581,7 @@ function CommandPaletteInner({
           },
         },
         {
-          label: `${t("toolBar.mermaidToExcalidraw")}...`,
+          label: `${t("toolBar.mermaidToSkydeck")}...`,
           category: DEFAULT_CATEGORIES.tools,
           icon: mermaidLogoIcon,
           viewMode: false,

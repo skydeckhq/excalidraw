@@ -4,7 +4,7 @@ import "./Tooltip.scss";
 
 export const getTooltipDiv = () => {
   const existingDiv = document.querySelector<HTMLDivElement>(
-    ".excalidraw-tooltip",
+    ".skydeck-tooltip",
   );
   if (existingDiv) {
     return existingDiv;
@@ -99,7 +99,7 @@ export const Tooltip = ({
   }
   return (
     <div
-      className="excalidraw-tooltip-wrapper"
+      className="skydeck-tooltip-wrapper"
       onPointerEnter={(event) =>
         updateTooltip(
           event.currentTarget as HTMLDivElement,

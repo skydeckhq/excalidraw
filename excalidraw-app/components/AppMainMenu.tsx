@@ -49,7 +49,6 @@ export const AppMainMenu: React.FC<{
       >
         Excalidraw+
       </MainMenu.ItemLink>
-      <MainMenu.DefaultItems.Socials />
       <MainMenu.ItemLink
         icon={loginIcon}
         href={`${import.meta.env.VITE_APP_PLUS_APP}${

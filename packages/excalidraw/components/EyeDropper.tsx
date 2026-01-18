@@ -47,7 +47,7 @@ export const EyeDropper: React.FC<{
 }> = ({ onCancel, onChange, onSelect, colorPickerType }) => {
   const eyeDropperContainer = useCreatePortalContainer({
     className: "excalidraw-eye-dropper-backdrop",
-    parentSelector: ".excalidraw-eye-dropper-container",
+    parentSelector: ".skydeck-eye-dropper-container",
   });
   const appState = useUIAppState();
   const elements = useExcalidrawElements();
@@ -217,7 +217,7 @@ export const EyeDropper: React.FC<{
     (event) => {
       if (
         event.target.closest(
-          ".excalidraw-eye-dropper-trigger, .excalidraw-eye-dropper-backdrop",
+          ".skydeck-eye-dropper-trigger, .skydeck-eye-dropper-backdrop",
         )
       ) {
         return true;
@@ -232,7 +232,7 @@ export const EyeDropper: React.FC<{
   }
 
   return createPortal(
-    <div ref={ref} className="excalidraw-eye-dropper-preview" />,
+    <div ref={ref} className="skydeck-eye-dropper-preview" />,
     eyeDropperContainer,
   );
 };

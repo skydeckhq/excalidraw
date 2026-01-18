@@ -463,7 +463,7 @@ export const MobileToolBar = ({
             icon={mermaidLogoIcon}
             data-testid="toolbar-embeddable"
           >
-            {t("toolBar.mermaidToExcalidraw")}
+            {t("toolBar.mermaidToSkydeck")}
           </DropdownMenu.Item>
           {app.props.aiEnabled !== false && app.plugins.diagramToCode && (
             <>

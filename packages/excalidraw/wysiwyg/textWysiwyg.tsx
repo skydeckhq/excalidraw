@@ -755,7 +755,7 @@ export const textWysiwyg = ({
   });
   window.addEventListener("beforeunload", handleSubmit);
   excalidrawContainer
-    ?.querySelector(".excalidraw-textEditorContainer")!
+    ?.querySelector(".skydeck-textEditorContainer")!
     .appendChild(editable);
 
   return handleSubmit;
