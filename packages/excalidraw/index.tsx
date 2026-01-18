@@ -30,6 +30,9 @@ const ExcalidrawBase = (props: ExcalidrawProps) => {
     onPointerUpdate,
     renderTopLeftUI,
     renderTopRightUI,
+    beforeMainMenu,
+    afterMainMenu,
+    customHelpUrl,
     langCode = defaultLang.code,
     viewModeEnabled,
     zenModeEnabled,
@@ -123,6 +126,9 @@ const ExcalidrawBase = (props: ExcalidrawProps) => {
           onPointerUpdate={onPointerUpdate}
           renderTopLeftUI={renderTopLeftUI}
           renderTopRightUI={renderTopRightUI}
+          beforeMainMenu={beforeMainMenu}
+          afterMainMenu={afterMainMenu}
+          customHelpUrl={customHelpUrl}
           langCode={langCode}
           viewModeEnabled={viewModeEnabled}
           zenModeEnabled={zenModeEnabled}

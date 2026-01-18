@@ -3,9 +3,8 @@ import React, { useEffect } from "react";
 import "./Tooltip.scss";
 
 export const getTooltipDiv = () => {
-  const existingDiv = document.querySelector<HTMLDivElement>(
-    ".skydeck-tooltip",
-  );
+  const existingDiv =
+    document.querySelector<HTMLDivElement>(".skydeck-tooltip");
   if (existingDiv) {
     return existingDiv;
   }

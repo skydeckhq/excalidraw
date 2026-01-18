@@ -90,6 +90,41 @@ export const saveAsJSON = async (
   return { fileHandle };
 };
 
+export const serializeSelectedAsJSON = (
+  elements: readonly ExcalidrawElement[],
+  selectedElementIds: AppState["selectedElementIds"],
+  appState: Partial<AppState>,
+  files: BinaryFiles,
+): string => {
+  const selectedElements = elements.filter((el) => selectedElementIds[el.id]);
+  return serializeAsJSON(selectedElements, appState, files, "local");
+};
+
+export const saveSelectedAsJSON = async (
+  elements: readonly ExcalidrawElement[],
+  selectedElementIds: AppState["selectedElementIds"],
+  appState: AppState,
+  files: BinaryFiles,
+  name: string = appState.name || DEFAULT_FILENAME,
+) => {
+  const serialized = serializeSelectedAsJSON(
+    elements,
+    selectedElementIds,
+    appState,
+    files,
+  );
+  const blob = new Blob([serialized], {
+    type: MIME_TYPES.excalidraw,
+  });
+
+  const fileHandle = await fileSave(blob, {
+    name: `${name}-selected`,
+    extension: "excalidraw",
+    description: "Excalidraw file (selected elements)",
+  });
+  return { fileHandle };
+};
+
 export const loadFromJSON = async (
   localAppState: AppState,
   localElements: readonly ExcalidrawElement[] | null,

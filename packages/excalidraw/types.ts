@@ -584,6 +584,18 @@ export interface ExcalidrawProps {
     isMobile: boolean,
     appState: UIAppState,
   ) => JSX.Element | null;
+  /**
+   * Render custom UI before the main menu (hamburger icon) in the top-left
+   */
+  beforeMainMenu?: React.ReactNode;
+  /**
+   * Render custom UI after the main menu (hamburger icon) in the top-left
+   */
+  afterMainMenu?: React.ReactNode;
+  /**
+   * Custom help documentation URL to display in the help dialog
+   */
+  customHelpUrl?: string;
   langCode?: Language["code"];
   viewModeEnabled?: boolean;
   zenModeEnabled?: boolean;

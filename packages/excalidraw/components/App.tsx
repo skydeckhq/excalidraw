@@ -1952,6 +1952,9 @@ class App extends React.Component<AppProps, AppState> {
                           langCode={getLanguage().code}
                           renderTopLeftUI={renderTopLeftUI}
                           renderTopRightUI={renderTopRightUI}
+                          beforeMainMenu={this.props.beforeMainMenu}
+                          afterMainMenu={this.props.afterMainMenu}
+                          customHelpUrl={this.props.customHelpUrl}
                           renderCustomStats={renderCustomStats}
                           showExitZenModeBtn={
                             typeof this.props?.zenModeEnabled === "undefined" &&

@@ -36,11 +36,6 @@ const Footer = ({
       >
         <Stack.Col gap={2}>
           <Section heading="canvasActions">
-            <ZoomActions
-              renderAction={actionManager.renderAction}
-              zoom={appState.zoom}
-            />
-
             {!appState.viewModeEnabled && (
               <UndoRedoActions
                 renderAction={actionManager.renderAction}
@@ -59,12 +54,20 @@ const Footer = ({
           "transition-right": appState.zenModeEnabled,
         })}
       >
-        <div style={{ position: "relative" }}>
-          {renderWelcomeScreen && <WelcomeScreenHelpHintTunnel.Out />}
-          <HelpButton
-            onClick={() => actionManager.executeAction(actionShortcuts)}
-          />
-        </div>
+        <Stack.Col gap={2}>
+          <Section heading="canvasActions">
+            <ZoomActions
+              renderAction={actionManager.renderAction}
+              zoom={appState.zoom}
+            />
+          </Section>
+          <div style={{ position: "relative" }}>
+            {renderWelcomeScreen && <WelcomeScreenHelpHintTunnel.Out />}
+            <HelpButton
+              onClick={() => actionManager.executeAction(actionShortcuts)}
+            />
+          </div>
+        </Stack.Col>
       </div>
       <ExitZenModeButton
         actionManager={actionManager}

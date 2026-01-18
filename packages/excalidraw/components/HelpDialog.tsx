@@ -10,7 +10,7 @@ import { t } from "../i18n";
 import { getShortcutKey } from "../shortcut";
 
 import { Dialog } from "./Dialog";
-import { ExternalLinkIcon, GithubIcon, youtubeIcon } from "./icons";
+import { ExternalLinkIcon } from "./icons";
 
 import "./HelpDialog.scss";
 
@@ -85,7 +85,13 @@ const ShortcutKey = (props: { children: React.ReactNode }) => (
   <kbd className="HelpDialog__key" {...props} />
 );
 
-export const HelpDialog = ({ onClose }: { onClose?: () => void }) => {
+export const HelpDialog = ({
+  onClose,
+  customHelpUrl,
+}: {
+  onClose?: () => void;
+  customHelpUrl?: string;
+}) => {
   const handleClose = React.useCallback(() => {
     if (onClose) {
       onClose();
@@ -99,6 +105,19 @@ export const HelpDialog = ({ onClose }: { onClose?: () => void }) => {
         title={t("helpDialog.title")}
         className={"HelpDialog"}
       >
+        {customHelpUrl && (
+          <div className="HelpDialog__header">
+            <a
+              className="HelpDialog__btn"
+              href={customHelpUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <div className="HelpDialog__link-icon">{ExternalLinkIcon}</div>
+              {t("helpDialog.customDocs")}
+            </a>
+          </div>
+        )}
         <Section title={t("helpDialog.shortcuts")}>
           <ShortcutIsland
             className="HelpDialog__island--tools"

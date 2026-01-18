@@ -92,6 +92,9 @@ interface LayerUIProps {
   langCode: Language["code"];
   renderTopLeftUI?: ExcalidrawProps["renderTopLeftUI"];
   renderTopRightUI?: ExcalidrawProps["renderTopRightUI"];
+  beforeMainMenu?: ExcalidrawProps["beforeMainMenu"];
+  afterMainMenu?: ExcalidrawProps["afterMainMenu"];
+  customHelpUrl?: ExcalidrawProps["customHelpUrl"];
   renderCustomStats?: ExcalidrawProps["renderCustomStats"];
   UIOptions: AppProps["UIOptions"];
   onExportImage: AppClassProperties["onExportImage"];
@@ -147,6 +150,9 @@ const LayerUI = ({
   showExitZenModeBtn,
   renderTopLeftUI,
   renderTopRightUI,
+  beforeMainMenu,
+  afterMainMenu,
+  customHelpUrl,
   renderCustomStats,
   UIOptions,
   onExportImage,
@@ -223,10 +229,19 @@ const LayerUI = ({
   };
 
   const renderCanvasActions = () => (
-    <div style={{ position: "relative" }}>
+    <div
+      style={{
+        position: "relative",
+        display: "flex",
+        gap: "0.5rem",
+        alignItems: "center",
+      }}
+    >
       {/* wrapping to Fragment stops React from occasionally complaining
                 about identical Keys */}
+      {beforeMainMenu}
       <tunnels.MainMenuTunnel.Out />
+      {afterMainMenu}
       {renderWelcomeScreen && <tunnels.WelcomeScreenMenuHintTunnel.Out />}
     </div>
   );
@@ -542,6 +557,7 @@ const LayerUI = ({
           onClose={() => {
             setAppState({ openDialog: null });
           }}
+          customHelpUrl={customHelpUrl}
         />
       )}
       <ActiveConfirmDialog />

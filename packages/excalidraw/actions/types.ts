@@ -81,6 +81,7 @@ export type ActionName =
   | "changeExportScale"
   | "saveToActiveFile"
   | "saveFileToDisk"
+  | "saveSelectedAsJSON"
   | "loadScene"
   | "duplicateSelection"
   | "deleteSelectedElements"

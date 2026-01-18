@@ -18,7 +18,7 @@ import { ProjectName } from "../components/ProjectName";
 import { ToolButton } from "../components/ToolButton";
 import { Tooltip } from "../components/Tooltip";
 import { ExportIcon, questionCircle, saveAs } from "../components/icons";
-import { loadFromJSON, saveAsJSON } from "../data";
+import { loadFromJSON, saveAsJSON, saveSelectedAsJSON } from "../data";
 import { isImageFileHandle } from "../data/blob";
 import { nativeFileSystemSupported } from "../data/filesystem";
 import { resaveAsImageWithScene } from "../data/resave";
@@ -254,6 +254,68 @@ export const actionSaveFileToDisk = register({
       data-testid="save-as-button"
     />
   ),
+});
+
+export const actionSaveSelectedAsJSON = register({
+  name: "saveSelectedAsJSON",
+  label: "buttons.saveSelectedAsJSON",
+  icon: ExportIcon,
+  trackEvent: { category: "export" },
+  predicate: (elements, appState) => {
+    return isSomeElementSelected(getNonDeletedElements(elements), appState);
+  },
+  perform: async (elements, appState, value, app) => {
+    try {
+      await saveSelectedAsJSON(
+        elements,
+        appState.selectedElementIds,
+        appState,
+        app.files,
+        app.getName(),
+      );
+      return {
+        captureUpdate: CaptureUpdateAction.EVENTUALLY,
+        appState: {
+          ...appState,
+          toast: {
+            message: t("toast.selectedElementsSaved", {
+              count: Object.keys(appState.selectedElementIds).length,
+            }),
+          },
+        },
+      };
+    } catch (error: any) {
+      if (error?.name !== "AbortError") {
+        console.error(error);
+      } else {
+        console.warn(error);
+      }
+      return { captureUpdate: CaptureUpdateAction.EVENTUALLY };
+    }
+  },
+  PanelComponent: ({ updateData, appState, elements }) => {
+    const selectedCount = isSomeElementSelected(
+      getNonDeletedElements(elements),
+      appState,
+    )
+      ? Object.keys(appState.selectedElementIds).length
+      : 0;
+
+    return (
+      <ToolButton
+        type="button"
+        icon={saveAs}
+        title={t("buttons.saveSelectedAsJSON")}
+        aria-label={t("buttons.saveSelectedAsJSON")}
+        showAriaLabel={useEditorInterface().formFactor === "phone"}
+        hidden={!nativeFileSystemSupported || selectedCount === 0}
+        onClick={() => updateData(null)}
+        data-testid="save-selected-button"
+      >
+        {selectedCount > 0 && `(${selectedCount})`}
+      </ToolButton>
+    );
+  },
 });
 
 export const actionLoadScene = register({
