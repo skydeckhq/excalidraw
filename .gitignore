@@ -14,6 +14,8 @@
 *.tgz
 build
 dist
+# Allow packages/excalidraw/dist for git-based installation
+!packages/excalidraw/dist
 firebase
 logs
 node_modules
